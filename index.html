@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StreamFlix - Votre plateforme de streaming préférée pour films et séries">
+    <title>StreamFlix - Films et Séries en Streaming</title>
+    
+    <!-- Preconnect pour optimiser les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/loading.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+    <!-- Loader avec skeleton screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <span class="logo-text">StreamFlix</span>
+            </div>
+            <div class="loader-skeleton">
+                <div class="skeleton-header"></div>
+                <div class="skeleton-hero"></div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-selector">
+        <button class="theme-toggle" data-theme="dark" title="Thème sombre">🌙</button>
+        <button class="theme-toggle" data-theme="light" title="Thème clair">☀️</button>
+        <button class="theme-toggle" data-theme="cinema" title="Thème cinéma">🎬</button>
+    </div>
+
+    <!-- Header avec navigation adaptive -->
+    <header class="header" id="header">
+        <nav class="navbar" role="navigation" aria-label="Navigation principale">
+            <div class="navbar-container">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="#" class="logo" aria-label="Retour à l'accueil">
+                        <span class="logo-icon">🎬</span>
+                        <span class="logo-text">StreamFlix</span>
+                    </a>
+                </div>
+
+                <!-- Navigation principale -->
+                <ul class="navbar-nav" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#accueil" class="nav-link active" role="menuitem" data-section="accueil">
+                            <span class="nav-text">Accueil</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#films" class="nav-link" role="menuitem" data-section="films">
+                            <span class="nav-text">Films</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#series" class="nav-link" role="menuitem" data-section="series">
+                            <span class="nav-text">Séries</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#nouveautes" class="nav-link" role="menuitem" data-section="nouveautes">
+                            <span class="nav-text">Nouveautés</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#ma-liste" class="nav-link" role="menuitem" data-section="ma-liste">
+                            <span class="nav-text">Ma Liste</span>
+                            <span class="nav-indicator"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Actions utilisateur -->
+                <div class="navbar-actions">
+                    <button class="search-toggle" aria-label="Rechercher" title="Rechercher">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="notifications-toggle" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-avatar" aria-label="Menu utilisateur" title="Menu utilisateur">
+                            <img src="https://placehold.co/32x32/e50914/ffffff?text=U" alt="Avatar utilisateur" width="32" height="32">
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">Mon Profil</a>
+                            <a href="#" class="dropdown-item">Paramètres</a>
+                            <a href="#" class="dropdown-item">Aide</a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">Se déconnecter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu mobile -->
+                <button class="mobile-menu-toggle" aria-label="Menu mobile" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Barre de recherche -->
+            <div class="search-bar" id="searchBar">
+                <div class="search-container">
+                    <input type="search" class="search-input" placeholder="Rechercher des films, séries, acteurs..." aria-label="Rechercher">
+                    <button class="search-submit" aria-label="Lancer la recherche">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="#" class="breadcrumb-link">Accueil</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="breadcrumb-text">Films populaires</span>
+                </li>
+            </ol>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="main" id="main">
+        <!-- Hero Section avec parallax -->
+        <section class="hero" id="accueil" aria-label="Film en vedette">
+            <div class="hero-background">
+                <div class="hero-image-layer" data-parallax="0.5">
+                    <img src="https://mcdn.wallpapersafari.com/medium/91/7/j0Bp6i.jpg" alt="" class="hero-bg-image">
+                </div>
+                <div class="hero-overlay" data-parallax="0.3"></div>
+            </div>
+            
+            <div class="hero-content" data-parallax="0.1">
+                <div class="hero-container">
+                    <div class="hero-info">
+                        <div class="hero-badge">
+                            <span class="badge-text">Nouveau</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-main">Le Film de l'Année</span>
+                            <span class="title-subtitle">Une expérience cinématographique inoubliable</span>
+                        </h1>
+                        <div class="hero-meta">
+                            <span class="meta-item">2024</span>
+                            <span class="meta-separator">•</span>
+                            <span class="meta-item">2h 15min</span>
+                            <span class="meta-separator">•</span>
+                            <span class="meta-item">Action, Drame</span>
+                            <span class="meta-separator">•</span>
+                            <div class="rating">
+                                <span class="rating-stars">★★★★☆</span>
+                                <span class="rating-score">8.5/10</span>
+                            </div>
+                        </div>
+                        <p class="hero-description">
+                            Découvrez une histoire captivante qui vous tiendra en haleine du début à la fin. 
+                            Une production exceptionnelle avec des effets visuels époustouflants et une bande sonore mémorable.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-large">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5,3 19,12 5,21"></polygon>
+                                </svg>
+                                <span>Regarder maintenant</span>
+                            </button>
+                            <button class="btn btn-secondary btn-large">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                                <span>Ajouter à ma liste</span>
+                            </button>
+                            <button class="btn btn-ghost btn-large">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                                <span>Plus d'infos</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Films populaires -->
+        <section class="content-section" id="films" aria-label="Films populaires">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Films populaires</h2>
+                    <div class="section-controls">
+                        <button class="filter-btn active" data-filter="all">Tous</button>
+                        <button class="filter-btn" data-filter="action">Action</button>
+                        <button class="filter-btn" data-filter="comedy">Comédie</button>
+                        <button class="filter-btn" data-filter="drama">Drame</button>
+                        <button class="filter-btn" data-filter="horror">Horreur</button>
+                    </div>
+                </div>
+                
+                <div class="movies-grid" data-stagger="true">
+                    <!-- Les cartes de films seront générées dynamiquement par l'API -->
+                    <div class="loading-placeholder">
+                        <div class="loading-text">Chargement des films...</div>
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Séries -->
+        <section class="content-section" id="series" aria-label="Séries populaires">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Séries populaires</h2>
+                    <a href="#" class="section-link">Voir tout</a>
+                </div>
+                
+                <div class="series-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track" data-stagger="true">
+                            <!-- Les cartes de séries seront similaires aux films -->
+                            <article class="movie-card series-card" data-stagger-item>
+                                <div class="card-image">
+                                    <img src="https://placehold.co/300x450/2a2a2a/ffffff?text=Série+1" alt="Affiche de la série" loading="lazy">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-btn play-btn" aria-label="Lire">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                    <polygon points="5,3 19,12 5,21"></polygon>
+                                                </svg>
+                                            </button>
+                                            <button class="card-btn like-btn" aria-label="J'aime">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="card-btn add-btn" aria-label="Ajouter à ma liste">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Nouvelle saison</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title">Série Dramatique</h3>
+                                    <div class="card-meta">
+                                        <span class="card-year">2024</span>
+                                        <span class="card-seasons">3 saisons</span>
+                                        <div class="card-rating">
+                                            <span class="rating-stars">★★★★★</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-description">Une série captivante avec des personnages complexes.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-prev" aria-label="Précédent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-next" aria-label="Suivant">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="logo-icon">🎬</span>
+                        <span class="logo-text">StreamFlix</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre plateforme de streaming préférée pour découvrir les meilleurs films et séries du monde entier.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Accueil</a></li>
+                        <li><a href="#" class="footer-link">Films</a></li>
+                        <li><a href="#" class="footer-link">Séries</a></li>
+                        <li><a href="#" class="footer-link">Nouveautés</a></li>
+                        <li><a href="#" class="footer-link">Ma Liste</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Centre d'aide</a></li>
+                        <li><a href="#" class="footer-link">Nous contacter</a></li>
+                        <li><a href="#" class="footer-link">Signaler un problème</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="footer-link">Politique de confidentialité</a></li>
+                        <li><a href="#" class="footer-link">Cookies</a></li>
+                        <li><a href="#" class="footer-link">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 StreamFlix. Tous droits réservés.
+                </p>
+                <div class="footer-meta">
+                    <span class="footer-version">Version 2.1.0</span>
+                    <span class="footer-separator">•</span>
+                    <span class="footer-region">France</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
