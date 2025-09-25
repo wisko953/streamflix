@@ -1,0 +1,687 @@
+/* ========================================
+   STREAMFLIX - LAYOUT CSS
+   ======================================== */
+
+/* ========================================
+   STRUCTURE PRINCIPALE
+   ======================================== */
+.main {
+  margin-top: 80px; /* Hauteur du header fixe */
+  min-height: calc(100vh - 80px);
+}
+
+.content-section {
+  padding: var(--space-3xl) 0;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ========================================
+   HERO SECTION AVEC PARALLAX
+   ======================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-image-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 120%; /* Plus grand pour l'effet parallax */
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-gradient-hero);
+  will-change: transform;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  will-change: transform;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.hero-info {
+  max-width: 600px;
+  animation: heroFadeIn 1s ease-out;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.badge-text {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  margin-bottom: var(--space-lg);
+}
+
+.title-main {
+  display: block;
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.title-subtitle {
+  display: block;
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  font-size: var(--fs-body);
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.meta-separator {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.rating-stars {
+  color: var(--color-accent);
+  font-size: var(--fs-body);
+}
+
+.rating-score {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero-description {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+  max-width: 500px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   GRILLES DE FILMS ADAPTATIVES
+   ======================================== */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+/* Grille responsive avec breakpoints spécifiques */
+@media (max-width: 575px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
+}
+
+@media (min-width: 1200px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-2xl);
+  }
+}
+
+/* Grille pour ma liste */
+.my-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+/* ========================================
+   CAROUSEL POUR SÉRIES
+   ======================================== */
+.series-carousel {
+  position: relative;
+  margin-top: var(--space-xl);
+}
+
+.carousel-container {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--space-lg);
+  transition: transform var(--transition-slow);
+  will-change: transform;
+}
+
+.series-card {
+  flex: 0 0 280px;
+  max-width: 280px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  opacity: 0.8;
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  border-color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+  left: var(--space-md);
+}
+
+.carousel-next {
+  right: var(--space-md);
+}
+
+/* ========================================
+   ONGLETS DE CONTENU
+   ======================================== */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+  padding: var(--space-4xl) 0 var(--space-xl);
+  margin-top: var(--space-4xl);
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-accent);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  transform: translateY(-2px);
+}
+
+.footer-title {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  padding: var(--space-xs) 0;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-primary);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-copyright {
+  color: var(--text-tertiary);
+  font-size: var(--fs-small);
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-tertiary);
+  font-size: var(--fs-small);
+}
+
+.footer-separator {
+  color: var(--text-muted);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN EXPERT
+   ======================================== */
+
+/* Extra Small devices (320px and up) */
+@media (min-width: 320px) {
+  .hero {
+    height: 70vh;
+    min-height: 500px;
+  }
+  
+  .hero-info {
+    max-width: 100%;
+  }
+  
+  .title-main {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .hero-actions .btn {
+    justify-content: center;
+  }
+}
+
+/* Small devices (576px and up) */
+@media (min-width: 576px) {
+  .hero {
+    height: 80vh;
+    min-height: 550px;
+  }
+  
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .hero-actions .btn {
+    justify-content: center;
+  }
+  
+  .navbar-container {
+    padding: var(--space-md) var(--space-xl);
+  }
+  
+  .section-container {
+    padding: 0 var(--space-xl);
+  }
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) {
+  .hero {
+    height: 90vh;
+    min-height: 600px;
+  }
+  
+  .hero-info {
+    max-width: 600px;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .navbar-nav {
+    display: flex;
+  }
+  
+  .navbar-actions {
+    display: flex;
+  }
+}
+
+/* Large devices (992px and up) */
+@media (min-width: 992px) {
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+  }
+  
+  .navbar-container {
+    padding: var(--space-lg) var(--space-2xl);
+  }
+  
+  .section-container {
+    padding: 0 var(--space-2xl);
+  }
+  
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+/* Extra Large devices (1200px and up) */
+@media (min-width: 1200px) {
+  .navbar-container {
+    padding: var(--space-lg) var(--space-3xl);
+  }
+  
+  .section-container {
+    padding: 0 var(--space-3xl);
+  }
+  
+  .hero-container {
+    padding: 0 var(--space-3xl);
+  }
+  
+  .footer-container {
+    padding: 0 var(--space-3xl);
+  }
+}
+
+/* Extra Extra Large devices (1400px and up) */
+@media (min-width: 1400px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  
+  .series-card {
+    flex: 0 0 320px;
+    max-width: 320px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE NAVIGATION
+   ======================================== */
+@media (max-width: 767px) {
+  .navbar-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-top: none;
+    flex-direction: column;
+    padding: var(--space-lg);
+    gap: var(--space-md);
+    z-index: var(--z-dropdown);
+  }
+  
+  .navbar-nav.active {
+    display: flex;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .navbar-actions {
+    display: none;
+  }
+  
+  .navbar-actions.mobile-visible {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-top: none;
+    padding: var(--space-md);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+  
+  .search-bar {
+    position: relative;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background-color: transparent;
+    border: none;
+    padding: var(--space-md) 0;
+  }
+  
+  .breadcrumb {
+    display: none;
+  }
+  
+  .theme-selector {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: var(--space-lg);
+    align-self: flex-start;
+  }
+}
+
+/* ========================================
+   CONTAINER QUERIES SIMULATION
+   ======================================== */
+.movie-card {
+  container-type: inline-size;
+}
+
+/* Simulation de container queries pour les cartes */
+@media (max-width: 350px) {
+  .movie-card .card-content {
+    padding: var(--space-sm);
+  }
+  
+  .movie-card .card-title {
+    font-size: var(--fs-body);
+  }
+  
+  .movie-card .card-meta {
+    font-size: 0.75rem;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  .header,
+  .theme-selector,
+  .loader,
+  .carousel-btn,
+  .hero-actions,
+  .card-overlay,
+  .footer {
+    display: none !important;
+  }
+  
+  .main {
+    margin-top: 0;
+  }
+  
+  .hero {
+    height: auto;
+    min-height: auto;
+    page-break-after: always;
+  }
+  
+  .movie-card {
+    break-inside: avoid;
+    margin-bottom: var(--space-lg);
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+

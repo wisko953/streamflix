@@ -1,0 +1,261 @@
+/* ========================================
+   STREAMFLIX - VARIABLES CSS & THÈMES
+   ======================================== */
+
+/* Variables globales communes */
+:root {
+  /* Typographie */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+  --font-accent: 'Playfair Display', serif;
+  
+  /* Tailles de police responsive avec clamp() */
+  --fs-hero: clamp(2.5rem, 5vw, 4rem);
+  --fs-h1: clamp(2rem, 4vw, 3rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --fs-body: clamp(0.875rem, 1.5vw, 1rem);
+  --fs-small: clamp(0.75rem, 1.2vw, 0.875rem);
+  
+  /* Espacements */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.1rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  
+  /* Breakpoints (pour référence dans les commentaires) */
+  /* --bp-xs: 320px */
+  /* --bp-sm: 576px */
+  /* --bp-md: 768px */
+  /* --bp-lg: 992px */
+  /* --bp-xl: 1200px */
+  /* --bp-2xl: 1400px */
+  
+  /* Rayons de bordure */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  
+  /* Ombres */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.5s ease-out;
+  --transition-theme: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ========================================
+   THÈME SOMBRE (par défaut)
+   ======================================== */
+:root,
+[data-theme="dark"] {
+  /* Couleurs principales */
+  --color-primary: #e50914;
+  --color-primary-hover: #f40612;
+  --color-primary-dark: #b8070f;
+  --color-secondary: #564d4d;
+  --color-accent: #ffd700;
+  
+  /* Couleurs de fond */
+  --bg-primary: #141414;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-card: #1f1f1f;
+  --bg-card-hover: #2d2d2d;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --bg-gradient-hero: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(26, 26, 26, 0.7) 100%);
+  
+  /* Couleurs de texte */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #8c8c8c;
+  --text-muted: #666666;
+  --text-inverse: #141414;
+  
+  /* Couleurs de bordure */
+  --border-primary: #333333;
+  --border-secondary: #404040;
+  --border-accent: var(--color-primary);
+  
+  /* Couleurs d'état */
+  --color-success: #46d369;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+  
+  /* Ombres spécifiques au thème */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-hero: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* ========================================
+   THÈME CLAIR
+   ======================================== */
+[data-theme="light"] {
+  /* Couleurs principales */
+  --color-primary: #e50914;
+  --color-primary-hover: #f40612;
+  --color-primary-dark: #b8070f;
+  --color-secondary: #6c757d;
+  --color-accent: #ff6b35;
+  
+  /* Couleurs de fond */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8f9fa;
+  --bg-overlay: rgba(255, 255, 255, 0.9);
+  --bg-gradient-hero: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(233, 236, 239, 0.9) 100%);
+  
+  /* Couleurs de texte */
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-tertiary: #6c757d;
+  --text-muted: #adb5bd;
+  --text-inverse: #ffffff;
+  
+  /* Couleurs de bordure */
+  --border-primary: #dee2e6;
+  --border-secondary: #e9ecef;
+  --border-accent: var(--color-primary);
+  
+  /* Couleurs d'état */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+  
+  /* Ombres spécifiques au thème */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-hero: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   THÈME CINÉMA/SÉPIA
+   ======================================== */
+[data-theme="cinema"] {
+  /* Couleurs principales */
+  --color-primary: #d4af37;
+  --color-primary-hover: #e6c547;
+  --color-primary-dark: #b8941f;
+  --color-secondary: #8b7355;
+  --color-accent: #cd853f;
+  
+  /* Couleurs de fond */
+  --bg-primary: #2c1810;
+  --bg-secondary: #3d2317;
+  --bg-tertiary: #4a2c1a;
+  --bg-card: #3a2014;
+  --bg-card-hover: #4a2818;
+  --bg-overlay: rgba(44, 24, 16, 0.9);
+  --bg-gradient-hero: linear-gradient(135deg, rgba(44, 24, 16, 0.95) 0%, rgba(61, 35, 23, 0.8) 100%);
+  
+  /* Couleurs de texte */
+  --text-primary: #f4e4bc;
+  --text-secondary: #d4c4a8;
+  --text-tertiary: #b8a082;
+  --text-muted: #8b7355;
+  --text-inverse: #2c1810;
+  
+  /* Couleurs de bordure */
+  --border-primary: #5d4037;
+  --border-secondary: #6d4c41;
+  --border-accent: var(--color-primary);
+  
+  /* Couleurs d'état */
+  --color-success: #8bc34a;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #2196f3;
+  
+  /* Ombres spécifiques au thème */
+  --shadow-card: 0 4px 12px rgba(44, 24, 16, 0.6);
+  --shadow-card-hover: 0 8px 24px rgba(44, 24, 16, 0.8);
+  --shadow-hero: 0 20px 40px rgba(44, 24, 16, 0.9);
+}
+
+/* ========================================
+   TRANSITIONS ENTRE THÈMES
+   ======================================== */
+*,
+*::before,
+*::after {
+  transition: 
+    background-color var(--transition-theme),
+    color var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+}
+
+/* Désactiver les transitions pendant le changement de thème pour éviter les flashs */
+.theme-transition-disable * {
+  transition: none !important;
+}
+
+/* ========================================
+   UTILITAIRES POUR LES THÈMES
+   ======================================== */
+.theme-toggle {
+  position: fixed;
+  top: var(--space-lg);
+  right: 0;
+  z-index: var(--z-fixed);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-card-hover);
+  transform: scale(1.05);
+}
+
+/* ========================================
+   VARIABLES POUR ANIMATIONS AVANCÉES
+   ======================================== */
+:root {
+  /* Durées d'animation */
+  --anim-duration-fast: 0.2s;
+  --anim-duration-normal: 0.4s;
+  --anim-duration-slow: 0.6s;
+  --anim-duration-very-slow: 1s;
+  
+  /* Fonctions d'easing */
+  --ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Délais pour animations en cascade */
+  --stagger-delay: 0.1s;
+  --stagger-delay-fast: 0.05s;
+  --stagger-delay-slow: 0.15s;
+}
+

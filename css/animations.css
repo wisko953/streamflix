@@ -1,0 +1,762 @@
+/* ========================================
+   STREAMFLIX - ANIMATIONS CSS AVANCÉES
+   ======================================== */
+
+/* ========================================
+   ANIMATIONS GLOBALES
+   ======================================== */
+
+/* Animation d'entrée pour les éléments */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* ========================================
+   ANIMATIONS EN CASCADE (STAGGERED)
+   ======================================== */
+[data-stagger="true"] [data-stagger-item] {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp var(--anim-duration-normal) var(--ease-out-quart) forwards;
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(1) {
+  animation-delay: 0s;
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(2) {
+  animation-delay: var(--stagger-delay);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(3) {
+  animation-delay: calc(var(--stagger-delay) * 2);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(4) {
+  animation-delay: calc(var(--stagger-delay) * 3);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(5) {
+  animation-delay: calc(var(--stagger-delay) * 4);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(6) {
+  animation-delay: calc(var(--stagger-delay) * 5);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(7) {
+  animation-delay: calc(var(--stagger-delay) * 6);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(8) {
+  animation-delay: calc(var(--stagger-delay) * 7);
+}
+
+[data-stagger="true"] [data-stagger-item]:nth-child(n+9) {
+  animation-delay: calc(var(--stagger-delay) * 8);
+}
+
+/* ========================================
+   PARALLAX MULTI-COUCHES
+   ======================================== */
+.hero-background [data-parallax] {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Les éléments avec data-parallax seront animés via JavaScript */
+.parallax-element {
+  transition: transform 0.1s linear;
+}
+
+/* ========================================
+   ROTATION 3D AU HOVER
+   ======================================== */
+.movie-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.movie-card:hover {
+  transform: translateY(-12px) rotateY(8deg) rotateX(2deg);
+  box-shadow: 
+    var(--shadow-card-hover),
+    0 0 40px rgba(var(--color-primary-rgb, 229, 9, 20), 0.2);
+}
+
+.movie-card .card-image {
+  transform-style: preserve-3d;
+  transition: transform var(--anim-duration-slow) var(--ease-out-quart);
+}
+
+.movie-card:hover .card-image {
+  transform: translateZ(20px);
+}
+
+.movie-card .card-content {
+  transform-style: preserve-3d;
+  transition: transform var(--anim-duration-slow) var(--ease-out-quart);
+}
+
+.movie-card:hover .card-content {
+  transform: translateZ(10px);
+}
+
+/* ========================================
+   ANIMATIONS DE SKELETON LOADING
+   ======================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-loading {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 25%,
+    var(--bg-tertiary) 50%,
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: wave 2s infinite;
+}
+
+/* ========================================
+   ANIMATIONS DE NAVIGATION
+   ======================================== */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--color-primary-rgb, 229, 9, 20), 0.1),
+    transparent
+  );
+  transition: left var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+/* Indicateur animé pour les onglets */
+.section-tabs {
+  position: relative;
+}
+
+.section-tabs::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+  transform: translateX(var(--tab-indicator-x, 0)) scaleX(var(--tab-indicator-width, 0));
+  transform-origin: left;
+}
+
+/* ========================================
+   ANIMATIONS DE BOUTONS
+   ======================================== */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width var(--anim-duration-normal) var(--ease-out-quart),
+              height var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.btn:active {
+  transform: translateY(0) translateZ(0);
+}
+
+/* Animation de chargement pour les boutons */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ========================================
+   ANIMATIONS DE CARTES
+   ======================================== */
+.card-actions {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.movie-card:hover .card-actions {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-btn {
+  transform: scale(0.8);
+  transition: all var(--anim-duration-fast) var(--ease-in-out-back);
+}
+
+.movie-card:hover .card-btn {
+  transform: scale(1);
+}
+
+.card-btn:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.card-btn:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.card-btn:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+/* Animation de flip pour les cartes */
+.movie-card.flip {
+  transform-style: preserve-3d;
+  transition: transform var(--anim-duration-slow) var(--ease-out-quart);
+}
+
+.movie-card.flip:hover {
+  transform: rotateY(180deg);
+}
+
+.movie-card.flip .card-front,
+.movie-card.flip .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.movie-card.flip .card-back {
+  transform: rotateY(180deg);
+  background-color: var(--bg-card);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ========================================
+   ANIMATIONS DE CAROUSEL
+   ======================================== */
+.carousel-track {
+  transition: transform var(--anim-duration-slow) var(--ease-out-quart);
+}
+
+.carousel-btn {
+  transform: translateX(0);
+  opacity: 0.7;
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  transform: translateX(0) scale(1.1);
+}
+
+.carousel-prev:hover {
+  transform: translateX(-4px) scale(1.1);
+}
+
+.carousel-next:hover {
+  transform: translateX(4px) scale(1.1);
+}
+
+/* ========================================
+   ANIMATIONS DE RECHERCHE
+   ======================================== */
+.search-bar {
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.search-input {
+  transition: all var(--anim-duration-fast) var(--ease-out-quart);
+}
+
+.search-input:focus {
+  transform: scale(1.02);
+}
+
+.search-submit {
+  transition: all var(--anim-duration-fast) var(--ease-in-out-back);
+}
+
+.search-submit:hover {
+  transform: translateY(-50%) scale(1.1) rotate(5deg);
+}
+
+.search-submit:active {
+  transform: translateY(-50%) scale(0.95) rotate(-5deg);
+}
+
+/* ========================================
+   ANIMATIONS DE THÈME
+   ======================================== */
+.theme-toggle {
+  transition: all var(--anim-duration-normal) var(--ease-in-out-back);
+}
+
+/* Animation quand on hover le parent */
+.theme-selector:hover .theme-toggle:nth-child(1) {
+  animation: themeUp var(--anim-duration-normal) var(--ease-in-out-back) forwards;
+}
+
+.theme-selector:hover .theme-toggle:nth-child(2) {
+  animation: themeMiddle var(--anim-duration-normal) var(--ease-in-out-back) forwards;
+}
+
+.theme-selector:hover .theme-toggle:nth-child(3) {
+  animation: themeDown var(--anim-duration-normal) var(--ease-in-out-back) forwards;
+}
+
+/* Reset des animations quand le hover quitte */
+.theme-selector .theme-toggle {
+  animation: none;
+}
+
+/* Keyframes existants */
+@keyframes themeMiddle {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(0) scale(1.2) rotate(180deg); }
+  100% { transform: translateY(0) scale(1) rotate(360deg); }
+}
+
+@keyframes themeUp {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.2) rotate(180deg); }
+  100% { transform: translateY(-40px) scale(1) rotate(360deg); }
+}
+
+@keyframes themeDown {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(40px) scale(1.2) rotate(180deg); }
+  100% { transform: translateY(40px) scale(1) rotate(360deg); }
+}
+
+/* ========================================
+   ANIMATIONS DE NOTIFICATION
+   ======================================== */
+.notification-badge {
+  animation: notificationPulse 2s infinite;
+}
+
+@keyframes notificationPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* ========================================
+   ANIMATIONS DE DROPDOWN
+   ======================================== */
+.user-dropdown {
+  transform-origin: top right;
+  transition: all var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.user-menu:hover .user-dropdown {
+  animation: dropdownSlideIn var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdown-item {
+  transition: all var(--anim-duration-fast) var(--ease-out-quart);
+  transform: translateX(0);
+}
+
+.dropdown-item:hover {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   ANIMATIONS DE HERO SECTION
+   ======================================== */
+.hero-badge {
+  animation: heroFadeInUp 1s var(--ease-out-quart) 0.2s both;
+}
+
+.hero-title {
+  animation: heroFadeInUp 1s var(--ease-out-quart) 0.4s both;
+}
+
+.hero-meta {
+  animation: heroFadeInUp 1s var(--ease-out-quart) 0.6s both;
+}
+
+.hero-description {
+  animation: heroFadeInUp 1s var(--ease-out-quart) 0.8s both;
+}
+
+.hero-actions {
+  animation: heroFadeInUp 1s var(--ease-out-quart) 1s both;
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   ANIMATIONS DE FILTRES
+   ======================================== */
+.filter-btn,
+.tab-btn,
+.sort-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--anim-duration-fast) var(--ease-out-quart);
+}
+
+.filter-btn::before,
+.tab-btn::before,
+.sort-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--color-primary-rgb, 229, 9, 20), 0.2),
+    transparent
+  );
+  transition: left var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.filter-btn:hover::before,
+.tab-btn:hover::before,
+.sort-btn:hover::before {
+  left: 100%;
+}
+
+/* ========================================
+   ANIMATIONS DE FOOTER
+   ======================================== */
+.social-link {
+  transition: all var(--anim-duration-normal) var(--ease-in-out-back);
+}
+
+.social-link:hover {
+  transform: translateY(-4px) rotate(5deg);
+}
+
+.footer-link {
+  position: relative;
+  transition: all var(--anim-duration-fast) var(--ease-out-quart);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary);
+  transition: width var(--anim-duration-normal) var(--ease-out-quart);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   ANIMATIONS RESPONSIVES
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  [data-stagger="true"] [data-stagger-item] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   ANIMATIONS DE PERFORMANCE
+   ======================================== */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.movie-card,
+.btn,
+.nav-link,
+.carousel-track {
+  will-change: transform;
+}
+
+/* Optimisation pour les animations sur mobile */
+@media (max-width: 767px) {
+  .movie-card:hover {
+    transform: translateY(-6px);
+  }
+  
+  .movie-card .card-image {
+    transition-duration: var(--anim-duration-fast);
+  }
+  
+  .parallax-element {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   ANIMATIONS D'ÉTAT DE CHARGEMENT
+   ======================================== */
+.loading-state {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-state::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ========================================
+   ANIMATIONS DE MICRO-INTERACTIONS
+   ======================================== */
+.rating-stars {
+  transition: all var(--anim-duration-fast) var(--ease-out-quart);
+}
+
+.rating:hover .rating-stars {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px var(--color-accent));
+}
+
+.card-badge {
+  transition: all var(--anim-duration-fast) var(--ease-in-out-back);
+}
+
+.movie-card:hover .card-badge {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.logo {
+  transition: all var(--anim-duration-normal) var(--ease-in-out-back);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px var(--color-primary));
+}
+

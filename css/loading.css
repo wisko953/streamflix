@@ -1,0 +1,124 @@
+/* ========================================
+   STREAMFLIX - STYLES DE CHARGEMENT
+   ======================================== */
+
+.loading-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  min-height: 300px;
+  grid-column: 1 / -1;
+}
+
+.loading-text {
+  font-size: var(--font-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-primary);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Styles pour les cartes générées dynamiquement */
+.movie-card .card-quality {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  background: var(--color-primary);
+  color: white;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  z-index: 2;
+}
+
+.movie-card .card-genres {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.genre-tag {
+  background: var(--bg-card-hover);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  font-weight: 500;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.action-btn.liked {
+  background: var(--color-primary);
+  color: white;
+}
+
+.action-btn.added {
+  background: var(--color-success);
+  color: white;
+}
+
+/* Animation d'apparition des cartes */
+.movie-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.movie-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive pour le loading */
+@media (max-width: 768px) {
+  .loading-placeholder {
+    padding: var(--space-lg);
+    min-height: 200px;
+  }
+  
+  .loading-text {
+    font-size: var(--font-md);
+  }
+  
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+  }
+}
+
